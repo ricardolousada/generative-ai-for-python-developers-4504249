@@ -13,7 +13,10 @@ client = openai.OpenAI()
 
 
 def generate_chat_completion(user_input=""):
-    pass
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=messages
+    )
 
 
 def main():

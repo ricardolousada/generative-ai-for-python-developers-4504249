@@ -6,9 +6,12 @@ from dotenv import load_dotenv
 
 
 # Load the environment variables - set up the OpenAI API client
-
+load_dotenv()
+client = openai.OpenAI()
 
 # Set up the model and prompt
+LANGUAGE_MODEL = "gpt-3.5-turbo"
+PROMPT_TEST = "this is a prompt. Say this is a test"
 
 
 def get_tokens(user_input: str) -> int:

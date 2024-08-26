@@ -13,11 +13,16 @@ client = openai.OpenAI()
 
 
 def generate_chat_completion(user_input=""):
+    messages.append({"role": "user", "content": user_input})
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages,
+        temperature=0.5,
+        max_tokens=150,
     )
-
+    mesage = response.choices[0].message
+    messages.append(mesage)
+    print(Fore.GREEN + "Bot: " + mesage.content)
 
 def main():
     while True:
@@ -51,8 +56,7 @@ def start_chat():
             main()
             break
         else:
-            pass
-            # generate
+            generate_chat_completion(user_input)
 
 
 if __name__ == "__main__":
